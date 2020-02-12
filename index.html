@@ -19,6 +19,7 @@ function connect_mongo() {
 }
 
 function test() {
+    document.write('aaa!!<br>');
     connect_mongo();
     watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000});
 }

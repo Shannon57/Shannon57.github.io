@@ -6,12 +6,20 @@
 var num = 0;
 var watch_id;
 
-function test() {
-    var sock = new WebSocket('ws://192.168.7.7:6000');
-    document.write('Socket 接続');
-    sock.addEventListener('open',function(e){
-        document.write('Socket 接続成功');
+
+function connect_mongo() {
+    const MongoClient = require('mongodb').MongoClient;
+    const uri = "mongodb+srv://poi:Poipoi098@cyberspace-1ewaf.azure.mongodb.net/test?retryWrites=true&w=majority";
+    const client = new MongoClient(uri, { useNewUrlParser: true });
+    client.connect(err => {
+    const collection = client.db("test").collection("devices");
+    // perform actions on the collection object
+    client.close();
     });
+}
+
+function test() {
+    connect_mongo();
     watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000});
 }
 

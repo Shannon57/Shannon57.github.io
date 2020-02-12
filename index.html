@@ -7,6 +7,10 @@ var num = 0;
 var watch_id;
 
 function test() {
+    var sock = new WebSocket('ws://192.68.7.7:6000');
+    sock.addEventListener('open',function(e){
+        document.write('Socket 接続成功');
+    });
     watch_id = navigator.geolocation.watchPosition(test2, function(e) { alert(e.message); }, {"enableHighAccuracy": true, "timeout": 20000, "maximumAge": 2000});
 }
 

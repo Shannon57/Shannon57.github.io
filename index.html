@@ -8,6 +8,7 @@ var watch_id;
 
 function test() {
     var sock = new WebSocket('ws://192.68.7.7:6000');
+    document.write('Socket 接続¥n');
     sock.addEventListener('open',function(e){
         document.write('Socket 接続成功');
     });
